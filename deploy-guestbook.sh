@@ -2,7 +2,7 @@
 
 DT=`date +%m-%d-%Y-%H-%M-%S`
 
-echo "Please provide the directory name where you want to clone:- Default dir is $DIR"
+echo "Please provide the directory name where you want to clone:- "
 read DIR
 
 #Handle if DIR name is not provided
