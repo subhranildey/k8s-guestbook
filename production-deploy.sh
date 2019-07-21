@@ -6,6 +6,6 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/mast
 #GCE-GKE
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud-generic.yaml
 
-kubectl apply -f guestbook/all-in-one/prod-namespace.yaml
+kubectl apply -f guestbook/all-in-one/production-namespace.yaml
 kubectl apply -f guestbook/all-in-one/guestbook-all-in-one.yaml --namespace=production
-kubectl apply -f guestbook/all-in-one/production-ingress.yaml --namespace=production
+kubectl apply -f guestbook/all-in-one/production-ingress.yaml
