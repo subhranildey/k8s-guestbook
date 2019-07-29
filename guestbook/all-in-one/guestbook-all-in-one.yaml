@@ -132,10 +132,10 @@ spec:
       - name: php-redis
         image: gcr.io/google-samples/gb-frontend:v4
         resources:
-          limits: 
+          limits:   #Maximum amount of CPU/RAM
             cpu: "200m"
             memory: "200Mi"
-          requests:
+          requests: #Minimum amount of CPU/RAM
             cpu: 100m
             memory: 100Mi
         env:
