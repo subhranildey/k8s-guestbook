@@ -53,9 +53,9 @@ cd $WDIR/metrics-server
 git clone https://github.com/kubernetes-incubator/metrics-server.git
 
 echo -e "\nDeployingii Metrics Server for feeding in core metrics to HPA"
-kubectl apply -f metric-server/deploy/1.8+/
+kubectl apply -f $WDIR/metric-server/deploy/1.8+/
 
 echo -e "\n deploy HPA"
-kubectl apply -f hpa.yaml --namespace=$ENV
+kubectl apply -f $WDIR/hpa.yaml --namespace=$ENV
 
 
