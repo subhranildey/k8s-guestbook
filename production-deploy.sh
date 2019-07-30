@@ -16,4 +16,4 @@ until [[ $IP =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; do
     IP=$(kubectl get ing -n production | grep production | awk '{print $3}')
 done
 
-echo -e "\nMake the below entry to /etc/hosts file\n\n$IP guestbook.mstakx.io"
+printf "\nMake the below entry to /etc/hosts file\n\n$IP guestbook.mstakx.io"

@@ -16,4 +16,4 @@ until [[ $IP =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; do
     IP=$(kubectl get ing -n staging | grep staging | awk '{print $3}')
 done
 
-echo -e "\nMake the below entry to /etc/hosts file\n\n$IP staging-guestbook.mstakx.io"
+printf "\nMake the below entry to /etc/hosts file\n\n$IP staging-guestbook.mstakx.io"
