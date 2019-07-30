@@ -2,12 +2,12 @@
 
 DT=`date +%m-%d-%Y-%H-%M-%S`
 
-echo "Please provide the directory name where you want to clone:- "
+printf "\nPlease provide the directory name where you want to clone:- "
 read DIR
 
 #Handle if DIR name is not provided
 while [[ $DIR = "" ]]; do
-   echo "Please type the dir name where you want to clone the repo to continue:- "
+   printf "\nPlease type the dir name where you want to clone the repo to continue:- "
    read DIR
 done
 
@@ -52,10 +52,10 @@ echo "To set up HPA we need to set up monitoring, so we are going to install met
 cd $WDIR
 git clone https://github.com/kubernetes-incubator/metrics-server.git
 
-echo -e "\nDeployingii Metrics Server for feeding in core metrics to HPA"
+printf "\nDeploying Metrics Server for feeding in core metrics to HPA"
 kubectl apply -f $WDIR/metrics-server/deploy/1.8+/
 
-echo -e "\n deploy HPA"
+printf "\n deploy HPA"
 kubectl apply -f $WDIR/hpa.yaml --namespace=$ENV
 
 
