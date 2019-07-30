@@ -11,8 +11,7 @@ while [[ $DIR = "" ]]; do
    read DIR
 done
 
-#Print the full path of repo
-echo "Repo will be clone into $PWD/$DIR"
+WDIR=$PWD/$DIR
 
 #Let user choose for which Environment
 while true; do
@@ -46,3 +45,17 @@ else
     cd $DIR
     sh $ENV-deploy.sh
 fi
+
+#To set up HPA we need to set up monitoring, so we are going to install metric-server
+
+echo "To set up HPA we need to set up monitoring, so we are going to install metric-server"
+cd $WDIR/metrics-server
+git clone https://github.com/kubernetes-incubator/metrics-server.git
+
+echo -e "\nDeployingii Metrics Server for feeding in core metrics to HPA"
+kubectl apply -f metric-server/deploy/1.8+/
+
+echo -e "\n deploy HPA"
+kubectl apply -f hpa.yaml --namespace=$ENV
+
+
