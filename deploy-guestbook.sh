@@ -49,7 +49,7 @@ fi
 #To set up HPA we need to set up monitoring, so we are going to install metric-server
 
 echo "To set up HPA we need to set up monitoring, so we are going to install metric-server"
-cd $WDIR/metrics-server
+cd $WDIR
 git clone https://github.com/kubernetes-incubator/metrics-server.git
 
 echo -e "\nDeployingii Metrics Server for feeding in core metrics to HPA"
