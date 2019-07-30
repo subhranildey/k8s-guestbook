@@ -35,13 +35,13 @@ if [ -d "$DIR" ]; then
             #Handle non empty directory
             echo $DIR in not empty, Backing it up at $DIR-BKP-$DT
             mv $DIR $DIR-BKP-$DT
-            git clone https://github.com/subhranildey/examples.git $DIR
+            git clone https://github.com/subhranildey/k8s-guestbook.git $DIR
         fi
     cd $DIR
     sh $ENV-deploy.sh
 #If Dir not exist
 else
-    git clone https://github.com/subhranildey/examples.git $DIR
+    git clone https://github.com/subhranildey/k8s-guestbook.git $DIR
     cd $DIR
     sh $ENV-deploy.sh
 fi
