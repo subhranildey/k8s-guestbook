@@ -12,8 +12,12 @@ kubectl apply -f guestbook/all-in-one/production-ingress.yaml
 
 IP=$(kubectl get ing -n production | grep production | awk '{print $3}')
 
+printf "\n Wait for the Prod IP....\n"
+
 until [[ $IP =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; do
     IP=$(kubectl get ing -n production | grep production | awk '{print $3}')
 done
 
-printf "\nMake the below entry to /etc/hosts file\n\n$IP guestbook.mstakx.io"
+printf "\nMake the below entry to /etc/hosts file \n"
+
+printf "\n$IP guestbook.mstakx.io\n"
