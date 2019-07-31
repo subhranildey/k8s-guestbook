@@ -2,16 +2,16 @@
 
 DT=`date +%m-%d-%Y-%H-%M-%S`
 
-printf "\nPlease provide the directory name where you want to clone:- "
+printf "\nPlease provide the directory name where you want to clone:- \n"
 read DIR
 
 #Handle if DIR name is not provided
 while [[ $DIR = "" ]]; do
-   printf "\nPlease type the dir name where you want to clone the repo to continue:- "
+   printf "\nPlease type the dir name where you want to clone the repo to continue:- \n "
    read DIR
 done
 
-WDIR=$PWD/$DIR
+WDIR=$PWD/$DIR-$DT
 
 #Let user choose for which Environment
 while true; do
@@ -23,28 +23,9 @@ while true; do
     esac
 done
 
-echo "Deploying $ENV"
-
-#Checkt if DIR and File exists
-if [ -d "$DIR" ]; then
-        if [ -e $DIR/"$ENV-deploy.sh" ]; then
-            cd $DIR
-            sh $ENV-deploy.sh
-            exit
-        else
-            #Handle non empty directory
-            echo $DIR in not empty, Backing it up at $DIR-BKP-$DT
-            mv $DIR $DIR-BKP-$DT
-            git clone https://github.com/subhranildey/k8s-guestbook.git $DIR
-        fi
-    cd $DIR
-    sh $ENV-deploy.sh
-#If Dir not exist
-else
-    git clone https://github.com/subhranildey/k8s-guestbook.git $DIR
-    cd $DIR
-    sh $ENV-deploy.sh
-fi
+printf "\nDeploying $ENV.......... \n"
+git clone https://github.com/subhranildey/k8s-guestbook.git $WDIR
+sh $WDIR/$ENV-deploy.sh
 
 #To set up HPA we need to set up monitoring, so we are going to install metric-server
 
@@ -52,10 +33,10 @@ echo "To set up HPA we need to set up monitoring, so we are going to install met
 cd $WDIR
 git clone https://github.com/kubernetes-incubator/metrics-server.git
 
-printf "\nDeploying Metrics Server for feeding in core metrics to HPA"
+printf "\nDeploying Metrics Server for feeding in core metrics to HPA..........\n"
 kubectl apply -f $WDIR/metrics-server/deploy/1.8+/
 
-printf "\n deploy HPA"
+printf "\n deploy HPA.......... \n"
 kubectl apply -f $WDIR/hpa.yaml --namespace=$ENV
 
 
