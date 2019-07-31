@@ -36,20 +36,6 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/mast
 printf "\n  Deploying $ENV.....\n"
 git clone https://github.com/subhranildey/k8s-guestbook.git $WDIR
 
-#------------------------------------------HPA------------------------------------------------
-
-#To set up HPA we need to set up monitoring, so we are going to install metric-server
-
-printf "\n  To set up HPA we need to set up monitoring, so we are going to install metric-server.....\n"
-cd $WDIR
-git clone https://github.com/kubernetes-incubator/metrics-server.git
-
-printf "\n  Deploying Metrics Server for feeding in core metrics to HPA.....\n"
-kubectl apply -f $WDIR/metrics-server/deploy/1.8+/
-
-printf "\n  Deploy HPA.....\n"
-kubectl apply -f $WDIR/hpa.yaml --namespace=$ENV
-
 #-----------------------------------------Deployment----------------------------------------------
 
 kubectl apply -f $WDIR/guestbook/all-in-one/$ENV-namespace.yaml
@@ -72,6 +58,20 @@ then
 else
     printf "\n$IP staging-guestbook.mstakx.io\n"
 fi
+
+#------------------------------------------HPA------------------------------------------------
+
+#To set up HPA we need to set up monitoring, so we are going to install metric-server
+
+printf "\n  To set up HPA we need to set up monitoring, so we are going to install metric-server.....\n"
+cd $WDIR
+git clone https://github.com/kubernetes-incubator/metrics-server.git
+
+printf "\n  Deploying Metrics Server for feeding in core metrics to HPA.....\n"
+kubectl apply -f $WDIR/metrics-server/deploy/1.8+/
+
+printf "\n  Deploy HPA.....\n"
+kubectl apply -f $WDIR/hpa.yaml --namespace=$ENV
 
 #-------------------------------------Cleanup----------------------------------------------------
 printf "\n  Deleting $WDIR.....\n"
