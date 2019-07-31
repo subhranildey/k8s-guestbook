@@ -2,6 +2,11 @@
 
 This script will let you setup guestbook application in no time,  It has been designed to be as unobtrusive and universal as possible. 
 
+
+## Create Cluster
+
+`gcloud container clusters create guestbook -m g1-small`
+
 ## Installation
 Run the script and follow the assistant:
 
@@ -24,5 +29,4 @@ Load test is not part of the deployment script, run this to test the application
  ### To check the autoscaling of the pods
 
  `watch -n 1 kubectl get hpa -n production`
-
-
+ 
