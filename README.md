@@ -30,7 +30,7 @@ Please change the namespace
 
  ### To check the autoscaling of the pods
 
- `watch -n 1 kubectl get hpa -n staging`
+ `watch -n 1 kubectl get pods -n staging`
  
 ## Watch the test
 
