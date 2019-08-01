@@ -32,3 +32,6 @@ Please change the namespace
 
  `watch -n 1 kubectl get hpa -n staging`
  
+## Watch the test
+
+ `tmux new-session \; send-keys 'watch -n 1 kubectl top pods -n staging' C-m \; split-window -v \; send-keys 'watch -n 1 kubectl get hpa -n staging' C-m \; split-window -h \; send-keys 'watch -n 1 kubectl get hpa -n staging' C-m \; split-window -v \;`
