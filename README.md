@@ -34,4 +34,4 @@ Please change the namespace
  
 ## Watch the test
 
- `tmux new-session \; send-keys 'watch -n 1 kubectl top pods -n staging' C-m \; split-window -v \; send-keys 'watch -n 1 kubectl get hpa -n staging' C-m \; split-window -h \; send-keys 'watch -n 1 kubectl get hpa -n staging' C-m \; split-window -v \;`
+`tmux new-session \; split-window -v \; send-keys 'watch -n 1 kubectl get hpa -n staging' C-m \; split-window -v \; send-keys 'watch -n 1 kubectl get pods -n staging' C-m \; split-window -h \; send-keys 'watch -n 1 kubectl top pods -n staging' C-m \;`
