@@ -16,17 +16,19 @@ Run the script and follow the assistant:
 
 Load test is not part of the deployment script, run this to test the application. 
 
-`kubectl apply -f https://raw.githubusercontent.com/subhranildey/k8s-guestbook/master/loadtest.yaml --namespace=<ENV>`
+`kubectl apply -f https://raw.githubusercontent.com/subhranildey/k8s-guestbook/master/loadtest.yaml --namespace=staging`
 
-### To check the load on pods every second
+### To check the load on pods every second 
 
- `watch -n 1 kubectl top pods -n <ENV>`
+Please change the namespace
+
+ `watch -n 1 kubectl top pods -n staging`
 
  ### To Check the HPA 
 
- `watch -n 1  kubectl get hpa - <ENV>`
+ `watch -n 1  kubectl get hpa - staging`
 
  ### To check the autoscaling of the pods
 
- `watch -n 1 kubectl get hpa -n production`
+ `watch -n 1 kubectl get hpa -n staging`
  
