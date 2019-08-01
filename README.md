@@ -26,7 +26,7 @@ Please change the namespace
 
  ### To Check the HPA 
 
- `watch -n 1  kubectl get hpa - staging`
+ `watch -n 1  kubectl get hpa -n staging`
 
  ### To check the autoscaling of the pods
 
