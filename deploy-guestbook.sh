@@ -44,7 +44,7 @@ kubectl apply -f $WDIR/guestbook/all-in-one/$ENV-ingress.yaml
 
 IP=$(kubectl get ing -n $ENV | grep $ENV | awk '{print $3}')
 
-printf "\n  Wait for the $ENV IP...."
+printf "\n  Wait for the $ENV IP.... This can take upto 5 minutes"
 
 until [[ $IP =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; do
     IP=$(kubectl get ing -n $ENV | grep $ENV | awk '{print $3}')
