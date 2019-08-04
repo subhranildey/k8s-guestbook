@@ -32,6 +32,6 @@ Please change the namespace
 
  `watch -n 1 kubectl get pods -n staging`
  
-## Watch the test
+## Run Load Test & Watch 
 
-`tmux new-session \; split-window -v \; send-keys 'watch -n 1 kubectl get hpa -n staging' C-m \; split-window -v \; send-keys 'watch -n 1 kubectl get pods -n staging' C-m \; split-window -h \; send-keys 'watch -n 1 kubectl top pods -n staging' C-m \;`
+`tmux new-session \; send-keys 'kubectl apply -f https://raw.githubusercontent.com/subhranildey/k8s-guestbook/master/loadtest.yaml --namespace=staging' C-m \; split-window -v \; send-keys 'watch -n 1 kubectl get hpa -n staging' C-m \; split-window -v \; send-keys 'watch -n 1 kubectl get pods -n staging' C-m \; split-window -h \; send-keys 'watch -n 1 kubectl top pods -n staging' C-m \;`
